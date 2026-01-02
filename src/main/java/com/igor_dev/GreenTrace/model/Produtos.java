@@ -3,17 +3,10 @@ package com.igor_dev.GreenTrace.model;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name = "produtos")
@@ -40,4 +33,9 @@ public class Produtos {
     
     @Column(name = "data_cadastro")
     private OffsetDateTime data_cadastro = OffsetDateTime.now();
+
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    @JsonBackReference
+    private Funcionarios funcionario;
 }

@@ -26,7 +26,7 @@ public class Vendas {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_venda;
     
     @ManyToOne
     @JoinColumn(name = "cliente_id")
@@ -37,6 +37,11 @@ public class Vendas {
     @JoinColumn(name = "produto_id")
     @JsonBackReference
     private Produtos produto;
+
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
+    @JsonBackReference
+    private Funcionarios funcionario;
 
     
 
