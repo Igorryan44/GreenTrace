@@ -29,8 +29,8 @@ public class Clientes {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cliente", nullable = false, unique = true)
-    private Long id_cliente;
+    @Column(name = "cliente_id", nullable = false, unique = true)
+    private Long cliente_id;
     
     @Column(name = "nome_cliente")
     private String nome_cliente;
@@ -41,8 +41,8 @@ public class Clientes {
     @Column(name = "contato_cliente", unique = true)
     private String contato_cliente;
     
-    @OneToMany(mappedBy="clientes")
+    @OneToMany(mappedBy="cliente")
     @JsonManagedReference
-    @Column(name = "compra")
+    @Column(name = "compras")
     private List<Vendas> compras = new ArrayList<Vendas>();
 }
