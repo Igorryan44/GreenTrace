@@ -36,7 +36,7 @@ public class Vendas {
     @ManyToOne
     @JoinColumn(name = "produto_id")
     @JsonBackReference
-    private Produto produto;
+    private Produtos produto;
 
     
 
