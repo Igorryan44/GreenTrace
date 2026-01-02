@@ -2,6 +2,7 @@ package com.igor_dev.GreenTrace.model;
 
 import java.time.OffsetDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,12 +25,23 @@ public class Usuario {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
     private Long id;
-
-    private String name; 
-    private String document; 
-    private String contact;
-    private OffsetDateTime createdAt = OffsetDateTime.now();
-    private OffsetDateTime lastUpdate = createdAt;
+    
+    
+    @Column(name = "nome", nullable = false)
+    private String nome; 
+    
+    @Column(name = "cpf", unique = false)
+    private String cpf; 
+    
+    @Column(name = "contato", unique = false)
+    private String contato;
+    
+    @Column(name = "criado_em")
+    private OffsetDateTime criado_em = OffsetDateTime.now();
+    
+    @Column(name = "ultima_atualizacao")
+    private OffsetDateTime ultima_atualizacao = OffsetDateTime.now();
 
 }

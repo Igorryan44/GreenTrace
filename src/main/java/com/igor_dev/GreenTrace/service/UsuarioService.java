@@ -33,10 +33,10 @@ public class UsuarioService {
         
         Usuario usuarioUpdated = Usuario.builder()
         .id(id)
-        .name(usuario.getName() != null ? usuario.getName() : usuarioEntity.getName())
-        .document(usuario.getDocument() != null ? usuario.getDocument() : usuarioEntity.getDocument())
-        .contact(usuario.getContact() != null ? usuario.getContact() : usuarioEntity.getDocument())
-        .lastUpdate(usuario.getLastUpdate() != null ? usuario.getLastUpdate() : usuarioEntity.getLastUpdate())
+        .nome(usuario.getNome() != null ? usuario.getNome() : usuarioEntity.getNome())
+        .cpf(usuario.getCpf() != null ? usuario.getCpf() : usuarioEntity.getCpf())
+        .contato(usuario.getContato() != null ? usuario.getContato() : usuarioEntity.getContato())
+        .ultima_atualizacao(usuario.getUltima_atualizacao() != null ? usuario.getUltima_atualizacao() : usuarioEntity.getUltima_atualizacao())
         .build();
 
         return usuarioRepository.save(usuarioUpdated);
