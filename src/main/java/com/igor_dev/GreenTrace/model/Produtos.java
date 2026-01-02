@@ -1,6 +1,7 @@
 package com.igor_dev.GreenTrace.model;
 
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,4 +37,7 @@ public class Produtos {
     
     @Column(name = "preco")
     private BigDecimal preco;
+    
+    @Column(name = "data_cadastro")
+    private OffsetDateTime data_cadastro = OffsetDateTime.now();
 }
