@@ -1,6 +1,7 @@
 package com.igor_dev.GreenTrace.dto;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import com.igor_dev.GreenTrace.model.Clientes;
 import com.igor_dev.GreenTrace.model.Funcionarios;
@@ -12,12 +13,13 @@ public record VendaResponseDTO(
     
     Clientes cliente,
     
-    Produtos produto,
+    List<Produtos> produto,
 
-    Funcionarios funcionario,
+    List<Funcionarios> funcionario,
 
     OffsetDateTime criadoEm
 
-) {
-    
+)
+{
+
 }

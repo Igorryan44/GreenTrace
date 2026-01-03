@@ -3,6 +3,9 @@ package com.igor_dev.GreenTrace.service;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import com.igor_dev.GreenTrace.model.Clientes;
+import com.igor_dev.GreenTrace.model.Funcionarios;
+import com.igor_dev.GreenTrace.model.Produtos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,18 +25,18 @@ public class VendaService {
     public VendaResponseDTO toResponse(Vendas venda){
         return new VendaResponseDTO(
             venda.getId_venda(),
-            venda.getCliente(),
-            venda.getProduto(),
-            venda.getFuncionario(),
+                venda.getClientes(),
+                (List<Produtos>) venda.getProdutos(),
+                (List<Funcionarios>) venda.getFuncionarios(),
             venda.getCriadoEm()
         );
     }
 
     public VendaResponseDTO criarVenda(VendaRequestDTO vendaRequestDTO) {
         Vendas venda = Vendas.builder()
-        .cliente(vendaRequestDTO.cliente())
-        .produto(vendaRequestDTO.produto())
-        .funcionario(vendaRequestDTO.funcionario())
+        .clientes(vendaRequestDTO.cliente())
+        .produtos((Produtos) vendaRequestDTO.produto())
+        .funcionarios((Funcionarios) vendaRequestDTO.funcionario())
         .criadoEm(OffsetDateTime.now())
         .build();
 
@@ -67,9 +70,9 @@ public class VendaService {
         
         Vendas vendaUpdated = Vendas.builder()
         .id_venda(id)
-        .cliente(vendaRequestDTO.cliente() != null ? vendaRequestDTO.cliente() : vendaEntity.cliente())
-        .produto(vendaRequestDTO.produto() != null ? vendaRequestDTO.produto() : vendaEntity.produto())
-        .funcionario(vendaRequestDTO.funcionario() != null ? vendaRequestDTO.funcionario() : vendaEntity.funcionario())
+        .clientes(vendaRequestDTO.cliente() != null ? vendaRequestDTO.cliente() : vendaEntity.cliente())
+        .produtos((Produtos) (vendaRequestDTO.produto() != null ? vendaRequestDTO.produto() : vendaEntity.produto()))
+        .funcionarios((Funcionarios) (vendaRequestDTO.funcionario() != null ? vendaRequestDTO.funcionario() : vendaEntity.funcionario()))
         .build();
 
         return toResponse(vendaRepository.save(vendaUpdated));

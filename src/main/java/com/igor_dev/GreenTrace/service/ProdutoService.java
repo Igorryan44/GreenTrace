@@ -40,7 +40,7 @@ public class ProdutoService {
         .quantidade(produto.getQuantidade() != null ? produto.getQuantidade() : produtoEntity.getQuantidade())
         .preco(produto.getPreco() != null ? produto.getPreco() : produtoEntity.getPreco())
         .data_cadastro(produtoEntity.getData_cadastro())
-        .funcionario(produtoEntity.getFuncionario())
+        .funcionarios(produtoEntity.getFuncionarios())
         .build();
 
         return produtoRepository.save(produtoUpdated);

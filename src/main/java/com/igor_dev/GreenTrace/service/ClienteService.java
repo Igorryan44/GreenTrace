@@ -33,11 +33,11 @@ public class ClienteService {
         .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         
         Clientes clienteUpdated = Clientes.builder()
-        .cliente_id(id)
+        .id_cliente(id)
         .nome_cliente(cliente.getNome_cliente() != null ? cliente.getNome_cliente() : clienteEntity.getNome_cliente())
         .cpf(cliente.getCpf() != null ? cliente.getCpf() : clienteEntity.getCpf())
         .contato_cliente(cliente.getContato_cliente() != null ? cliente.getContato_cliente() : clienteEntity.getContato_cliente())
-        .compras(clienteEntity.getCompras())
+        .venda(clienteEntity.getVenda())
         .build();
 
         return clienteRepository.save(clienteUpdated);

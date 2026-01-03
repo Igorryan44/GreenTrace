@@ -1,6 +1,8 @@
 package com.igor_dev.GreenTrace.model;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -8,7 +10,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "funcionarios")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,10 +21,8 @@ public class Funcionarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    @OneToMany(mappedBy = "funcionario")
     @JsonManagedReference
     private Long id;
-    
     
     @Column(name = "nome", nullable = false)
     private String nome; 
@@ -38,5 +38,13 @@ public class Funcionarios {
     
     @Column(name = "ultima_atualizacao")
     private OffsetDateTime ultima_atualizacao = OffsetDateTime.now();
+
+    @OneToMany(mappedBy = "funcionarios")
+    @JsonManagedReference
+    private List<Produtos> produtos = new ArrayList<Produtos>();
+
+    @OneToMany(mappedBy = "funcionarios")
+    @JsonManagedReference
+    private List<Vendas> vendas = new ArrayList<Vendas>();
 
 }

@@ -3,6 +3,7 @@ package com.igor_dev.GreenTrace.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
@@ -19,8 +20,8 @@ public class Clientes {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cliente_id", nullable = false, unique = true)
-    private Long cliente_id;
+    @Column(name = "id_cliente", nullable = false, unique = true)
+    private Long id_cliente;
     
     @Column(name = "nome_cliente")
     private String nome_cliente;
@@ -31,8 +32,7 @@ public class Clientes {
     @Column(name = "contato_cliente", unique = true)
     private String contato_cliente;
     
-    @OneToMany(mappedBy="cliente")
+    @OneToMany(mappedBy="clientes")
     @JsonManagedReference
-    @Column(name = "compras")
-    private List<Vendas> compras = new ArrayList<Vendas>();
+    private List<Vendas> venda = new ArrayList<Vendas>();
 }
