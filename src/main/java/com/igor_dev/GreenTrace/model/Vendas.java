@@ -1,7 +1,10 @@
 package com.igor_dev.GreenTrace.model;
 
+import java.time.OffsetDateTime;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,6 +45,9 @@ public class Vendas {
     @JoinColumn(name = "funcionario_id")
     @JsonBackReference
     private Funcionarios funcionario;
+
+    @Column(name = "criado_em")
+    private OffsetDateTime criadoEm = OffsetDateTime.now();
 
     
 

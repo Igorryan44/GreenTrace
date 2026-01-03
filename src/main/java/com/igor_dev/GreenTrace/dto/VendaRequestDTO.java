@@ -1,25 +1,18 @@
 package com.igor_dev.GreenTrace.dto;
 
+import java.time.OffsetDateTime;
+
 import com.igor_dev.GreenTrace.model.Clientes;
+import com.igor_dev.GreenTrace.model.Funcionarios;
 import com.igor_dev.GreenTrace.model.Produtos;
 
-public class VendaRequestDTO {
-    
-    private Long id_venda;
-    
-    private Clientes cliente;
-    
-    private Produtos produto;
+public record VendaRequestDTO (
 
-    public Long getId_venda() {
-        return id_venda;
-    }
+    Clientes cliente,
+    
+    Produtos produto,
 
-    public Clientes getCliente() {
-        return cliente;
-    }
+    Funcionarios funcionario,
 
-    public Produtos getProduto() {
-        return produto;
-    }
-}
+    OffsetDateTime criadoEm
+){}
