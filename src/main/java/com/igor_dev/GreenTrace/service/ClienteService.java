@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.igor_dev.GreenTrace.model.Clientes;
-import com.igor_dev.GreenTrace.model.Funcionarios;
 import com.igor_dev.GreenTrace.repository.ClienteRepository;
 
 @Service
@@ -16,7 +15,7 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Clientes createCliente(Funcionarios funcionario, Clientes cliente){
+    public Clientes createCliente(Clientes cliente){
         return clienteRepository.save(cliente);
     }
 

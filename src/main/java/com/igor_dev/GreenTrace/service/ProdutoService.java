@@ -17,7 +17,7 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public Produtos createProdutos(Funcionarios funcionario, Produtos produto){
+    public Produtos createProduto(Funcionarios funcionario, Produtos produto){
         return produtoRepository.save(produto);
     }
 
@@ -25,13 +25,13 @@ public class ProdutoService {
         return produtoRepository.findAll();
     }
 
-    public Optional<Produtos> findProdutorById(Long id){
+    public Optional<Produtos> findProdutoById(Long id){
         return produtoRepository.findById(id);
     }
 
 
     public Produtos updateProduto (Long id, Produtos produto){
-        Produtos produtoEntity = findProdutorById(id)
+        Produtos produtoEntity = findProdutoById(id)
         .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         
         Produtos produtoUpdated = Produtos.builder()

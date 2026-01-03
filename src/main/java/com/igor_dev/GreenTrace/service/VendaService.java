@@ -62,19 +62,18 @@ public class VendaService {
     }
 
 
-    // TODO
-    // public Vendas updateVenda (Long id, Vendas venda){
-    //     Vendas vendaEntity = findVendaById(id);
+    public VendaResponseDTO updateVenda (Long id, VendaRequestDTO vendaRequestDTO){
+        VendaResponseDTO vendaEntity = findVendaById(id);
         
-    //     Vendas vendaUpdated = Vendas.builder()
-    //     .id_venda(id)
-    //     .cliente(venda.getCliente() != null ? venda.getCliente() : vendaEntity.getCliente())
-    //     .produto(venda.getProduto() != null ? venda.getProduto() : vendaEntity.getProduto())
-    //     .funcionario(venda.getFuncionario() != null ? venda.getFuncionario() : vendaEntity.getFuncionario())
-    //     .build();
+        Vendas vendaUpdated = Vendas.builder()
+        .id_venda(id)
+        .cliente(vendaRequestDTO.cliente() != null ? vendaRequestDTO.cliente() : vendaEntity.cliente())
+        .produto(vendaRequestDTO.produto() != null ? vendaRequestDTO.produto() : vendaEntity.produto())
+        .funcionario(vendaRequestDTO.funcionario() != null ? vendaRequestDTO.funcionario() : vendaEntity.funcionario())
+        .build();
 
-    //     return toResponse(vendaRepository.save(vendaUpdated));
-    // }
+        return toResponse(vendaRepository.save(vendaUpdated));
+    }
 
 
 }
